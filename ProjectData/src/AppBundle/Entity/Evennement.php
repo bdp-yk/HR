@@ -100,6 +100,28 @@ class Evennement
 
 
     /**
+     * @var Utilisateur
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur",inversedBy="evennements_proposes")
+     */
+    private $responsable_evennement;
+
+
+    /**
+     * @var Utilisateur[]
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Utilisateur")
+     */
+    private $adherants;
+
+
+    /**
+     * @var Media
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Media")
+     */
+    private $media_event;
+
+
+
+    /**
      * Get id
      *
      * @return int
@@ -372,5 +394,62 @@ class Evennement
     {
         return $this->limitInscription;
     }
+
+    /**
+     * @return Utilisateur
+     */
+    public function getResponsableEvennement()
+    {
+        return $this->responsable_evennement;
+    }
+
+    /**
+     * @param Utilisateur $responsable_evennement
+     * @return Evennement
+     */
+    public function setResponsableEvennement($responsable_evennement)
+    {
+        $this->responsable_evennement = $responsable_evennement;
+        return $this;
+    }
+
+    /**
+     * @return Utilisateur[]
+     */
+    public function getAdherants()
+    {
+        return $this->adherants;
+    }
+
+    /**
+     * @param Utilisateur[] $adherants
+     * @return Evennement
+     */
+    public function setAdherants($adherants)
+    {
+        $this->adherants = $adherants;
+        return $this;
+    }
+
+    /**
+     * @return Media
+     */
+    public function getMediaEvent()
+    {
+        return $this->media_event;
+    }
+
+    /**
+     * @param Media $media_event
+     * @return Evennement
+     */
+    public function setMediaEvent($media_event)
+    {
+        $this->media_event = $media_event;
+        return $this;
+    }
+
+
+
 }
 

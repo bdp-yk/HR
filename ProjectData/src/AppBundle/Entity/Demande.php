@@ -37,6 +37,13 @@ class Demande
 
 
     /**
+     * @var Utilisateur;
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Utilisateur")
+     */
+    private $employe_emetteur;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -93,5 +100,22 @@ class Demande
     {
         return $this->description;
     }
+
+    /**
+     * @return Utilisateur
+     */
+    public function getEmployeEmetteur()
+    {
+        return $this->employe_emetteur;
+    }
+
+    /**
+     * @param Utilisateur $employe_emetteur
+     */
+    public function setEmployeEmetteur($employe_emetteur)
+    {
+        $this->employe_emetteur = $employe_emetteur;
+    }
+
 }
 

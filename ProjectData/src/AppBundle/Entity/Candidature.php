@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Repository\OffreEmploieRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +42,27 @@ class Candidature
      * @ORM\Column(name="etat_candidature", type="boolean")
      */
     private $etatCandidature;
+
+
+    /**
+     * @var Utilisateur
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur",inversedBy="liste_candidature")
+     */
+    private $utilisateur_candidat;
+
+
+    /**
+     * @var OffreEmploie
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\OffreEmploie",inversedBy="liste_candidature")
+     */
+    private $offre_candidature;
+
+
+    /**
+     * @var Media
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Media",mappedBy="candidat_proprietaire")
+     */
+    private $documents_associes;
 
 
     /**
@@ -124,5 +146,62 @@ class Candidature
     {
         return $this->etatCandidature;
     }
+
+    /**
+     * @return Utilisateur
+     */
+    public function getUtilisateurCandidat()
+    {
+        return $this->utilisateur_candidat;
+    }
+
+    /**
+     * @param Utilisateur $utilisateur_candidat
+     * @return Candidature
+     */
+    public function setUtilisateurCandidat($utilisateur_candidat)
+    {
+        $this->utilisateur_candidat = $utilisateur_candidat;
+        return $this;
+    }
+
+    /**
+     * @return OffreEmploie
+     */
+    public function getOffreCandidature()
+    {
+        return $this->offre_candidature;
+    }
+
+    /**
+     * @param OffreEmploie $offre_candidature
+     * @return Candidature
+     */
+    public function setOffreCandidature($offre_candidature)
+    {
+        $this->offre_candidature = $offre_candidature;
+        return $this;
+    }
+
+    /**
+     * @return Media
+     */
+    public function getDocumentsAssocies()
+    {
+        return $this->documents_associes;
+    }
+
+    /**
+     * @param Media $documents_associes
+     * @return Candidature
+     */
+    public function setDocumentsAssocies($documents_associes)
+    {
+        $this->documents_associes = $documents_associes;
+        return $this;
+    }
+
+
+
 }
 

@@ -44,6 +44,18 @@ class BilanDisciplinaire
 
 
     /**
+     * var Utilisateur
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur",inversedBy="bilans_responsable")
+     */
+    private $responsable;
+
+    /**
+     * @var Rating[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Rating",mappedBy="bilans_rating")
+     */
+    private $ratings;
+    /**
      * Get id
      *
      * @return int
@@ -124,5 +136,39 @@ class BilanDisciplinaire
     {
         return $this->remarques;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getResponsable()
+    {
+        return $this->responsable;
+    }
+
+    /**
+     * @param mixed $responsable
+     */
+    public function setResponsable($responsable)
+    {
+        $this->responsable = $responsable;
+    }
+
+    /**
+     * @return Rating[]
+     */
+    public function getRatings()
+    {
+        return $this->ratings;
+    }
+
+    /**
+     * @param Rating[] $ratings
+     */
+    public function setRatings($ratings)
+    {
+        $this->ratings = $ratings;
+    }
+
+
 }
 

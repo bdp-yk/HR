@@ -56,7 +56,18 @@ class OffreEmploie
      */
     private $promotion;
 
+    /**
+     * @var Candidature[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Candidature",mappedBy="offre_candidature")
+     */
+    private  $liste_candidature;
 
+
+    /**
+     * @var Media
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Media")
+     */
+    private $media_offre;
     /**
      * Get id
      *
@@ -186,5 +197,38 @@ class OffreEmploie
     {
         return $this->promotion;
     }
+
+    /**
+     * @return Candidature[]
+     */
+    public function getListeCandidature()
+    {
+        return $this->liste_candidature;
+    }
+
+    /**
+     * @param Candidature[] $liste_candidature
+     */
+    public function setListeCandidature($liste_candidature)
+    {
+        $this->liste_candidature = $liste_candidature;
+    }
+
+    /**
+     * @return Media
+     */
+    public function getMediaOffre()
+    {
+        return $this->media_offre;
+    }
+
+    /**
+     * @param Media $media_offre
+     */
+    public function setMediaOffre($media_offre)
+    {
+        $this->media_offre = $media_offre;
+    }
+
 }
 

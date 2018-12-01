@@ -51,6 +51,18 @@ class Absence
 
 
     /**
+     * var Utilisateur
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Utilisateur")
+     */
+    private $utilisateur;
+
+
+    /**
+     * @var Media
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Media")
+     */
+    private $media;
+    /**
      * Get id
      *
      * @return int
@@ -155,5 +167,43 @@ class Absence
     {
         return $this->estAnnuel;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getUtilisateur()
+    {
+        return $this->utilisateur;
+    }
+
+    /**
+     * @param mixed $utilisateur
+     * @return Absence
+     */
+    public function setUtilisateur($utilisateur)
+    {
+        $this->utilisateur = $utilisateur;
+        return $this;
+    }
+
+    /**
+     * @return Media
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param Media $media
+     * @return Absence
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
+        return $this;
+    }
+
+
 }
 

@@ -35,7 +35,18 @@ class Rating
      */
     private $note;
 
+    /**
+     * @var Utilisateur
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur",inversedBy="employe_ratings")
+     */
+    private  $employe_concerne;
 
+
+    /**
+     * @var BilanDisciplinaire
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\BilanDisciplinaire",inversedBy="ratings")
+     */
+    private $bilans_rating;
     /**
      * Get id
      *
@@ -93,5 +104,43 @@ class Rating
     {
         return $this->note;
     }
+
+    /**
+     * @return Utilisateur
+     */
+    public function getEmployeConcerne()
+    {
+        return $this->employe_concerne;
+    }
+
+    /**
+     * @param Utilisateur $employe_concerne
+     * @return Rating
+     */
+    public function setEmployeConcerne($employe_concerne)
+    {
+        $this->employe_concerne = $employe_concerne;
+        return $this;
+    }
+
+    /**
+     * @return BilanDisciplinaire
+     */
+    public function getBilansRating()
+    {
+        return $this->bilans_rating;
+    }
+
+    /**
+     * @param BilanDisciplinaire $bilans_rating
+     * @return Rating
+     */
+    public function setBilansRating($bilans_rating)
+    {
+        $this->bilans_rating = $bilans_rating;
+        return $this;
+    }
+
+
 }
 

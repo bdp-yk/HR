@@ -28,7 +28,11 @@ class Role
      */
     private $designation;
 
-
+    /**
+     * @var Utilisateur[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Utilisateur",mappedBy="role")
+     */
+    private $liste_utilisateur;
     /**
      * Get id
      *
@@ -62,5 +66,22 @@ class Role
     {
         return $this->designation;
     }
+
+    /**
+     * @return Utilisateur[]
+     */
+    public function getListeUtilisateur()
+    {
+        return $this->liste_utilisateur;
+    }
+
+    /**
+     * @param Utilisateur[] $liste_utilisateur
+     */
+    public function setListeUtilisateur($liste_utilisateur)
+    {
+        $this->liste_utilisateur = $liste_utilisateur;
+    }
+
 }
 
