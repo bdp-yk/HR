@@ -5,10 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Media oko ok
- * Modification de Yassin
- * Media oko ok
- * modification de zouhaier
+ * Media 
  *
  * @ORM\Table(name="media")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\MediaRepository")
