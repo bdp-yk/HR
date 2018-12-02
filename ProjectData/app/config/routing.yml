@@ -1,5 +1,4 @@
-testing:
-    resource: "@TestingBundle/Controller/"
+application:
+    resource: "@AppBundle/Controller/"
     type:     annotation
     prefix:   /
-

@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use AppBundle\Entity\Utilisateur;
 
 class DefaultController extends Controller
 {
@@ -13,9 +14,10 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('index.html', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $rep = $this->getDoctrine()->getRepository("AppBundle:Utilisateur");
+//        dump($rep->findAll());
+//        die();
+        return $this->render('@App/index.html.twig');
+        // replace this example code with whatever you need0
     }
 }
