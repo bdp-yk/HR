@@ -6,12 +6,12 @@ use AppBundle\Entity\OffreEmploie;
 use AppBundle\Form\OffreEmploieType;
 use AppBundle\Form\UtilisateurType;
 use http\Env\Response;
+use AppBundle\Entity\Absence;
+use AppBundle\Form\AbsenceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Utilisateur;
-
-
 
 
 class DefaultController extends Controller
@@ -22,21 +22,19 @@ class DefaultController extends Controller
 
     public function listAction(Request $request)
 
-    { $var=new Utilisateur();
+    {
+        $var = new Utilisateur();
 
 
         $repository = $this->getDoctrine()->getRepository("AppBundle:Utilisateur");
         $personne = $repository->findAll();
         return $this->render('@App/doc.html.twig', array(
-            'Utilisateur'=>$personne));
+            'Utilisateur' => $personne));
         dump($personne);
         die();
 
 
-
     }
-
-
 
 
     /**
@@ -45,7 +43,7 @@ class DefaultController extends Controller
     public function updateindexAction(Request $request, Utilisateur $personne = null)
 
     {
-       if (!$personne)
+        if (!$personne)
             $personne = new Utilisateur();
         $form = $this->createForm(UtilisateurType::class, $personne);
 
@@ -72,10 +70,11 @@ class DefaultController extends Controller
         return $this->render('@App/index.html.twig');
         // replace this example code with whatever you need0
     }
+
     /**
      * @Route("/add/{personne}")
      */
-   public function addindexAction(Request $request, Utilisateur $personne =null)
+    public function addindexAction(Request $request, Utilisateur $personne = null)
 
     {
 
@@ -102,10 +101,11 @@ class DefaultController extends Controller
 
 
     }
+
     /**
      * @Route("/addoffre/{offre}")
      */
-    public function addoffreAction(Request $request, OffreEmploie $offre =null)
+    public function addoffreAction(Request $request, OffreEmploie $offre = null)
 
     {
 
@@ -133,14 +133,16 @@ class DefaultController extends Controller
 
 
     }
+
     /**
      * @Route("/updateoffre/{offre}")
      */
-    public function updateoffreAction(Request $request, OffreEmploie $offre =null)
+    public function updateoffreAction(Request $request, OffreEmploie $offre = null)
 
-    { if (!$offre)
+    {
+        if (!$offre)
 
-        $offre = new OffreEmploie();
+            $offre = new OffreEmploie();
         $form = $this->createForm(OffreEmploieType::class, $offre);
 
         $form->handleRequest($request);
@@ -163,6 +165,7 @@ class DefaultController extends Controller
 
 
     }
+
     /**
      * @Route("/deleteoffre/{offre}")
      */
@@ -176,8 +179,24 @@ class DefaultController extends Controller
         //Commit
         $em->flush();
         return $this->redirectToRoute('ok');
-       // return $this->render('AppBundle/Default/list');
+        // return $this->render('AppBundle/Default/list');
         //return $this->render('@App/delete.html.twig');
+
+
     }
 
+    /**
+     * @Route("/", name="homepage")
+     */
+    public
+    function indexAbsenceAction(Request $request)
+    {
+        $absence = new Absence();
+        $form = $this->createForm(AbsenceType::class, $absence);
+
+        return $this->render('@App/Absence/index.html.twig', array(
+            'absence_form' => $form->createView()
+        ));
+        // replace this example code with whatever you need0
+    }
 }
