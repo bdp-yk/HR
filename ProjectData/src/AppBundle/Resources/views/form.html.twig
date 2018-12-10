@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
+    <meta name="author" content="Creative Tim">
+    <title>{% block pagetitle %}HR Manager{% endblock %}</title>
+    <!-- Favicon -->
+    <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    {% block css %}
+        <!-- Icons -->
+        <link href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+        <!-- Argon CSS -->
+        <link type="text/css" href="{{ asset('assets/css/argon.css?v=1.0.0') }}" rel="stylesheet">
+    {% endblock %}
+</head>
+<body class="bg-default">
+
+
+
+            {{ form_start(form)}}
+
+            <div class="form-group">
+
+                <label>{{ form_label(form.titre) }}</label>
+                <div class="form-group ">
+                    <div class="input-group input-group-alternative">
+                        {{ form_widget(form.titre,{'attr': {'class': 'form-control','placeholder': 'titre'}})  }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ form_label(form.description) }}</label>
+                    {{ form_widget(form.description,{'attr': {'class': 'form-control','placeholder':'description'}})  }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form_label(form.poste) }}</label>
+                    {{ form_widget(form.poste,{'attr': {'class': 'form-control','placeholder': 'poste'}})  }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form_label(form.salaire) }}</label>
+                    {{ form_widget(form.salaire,{'attr': {'class': 'form-control','placeholder': 'salaire'}})  }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form_label(form.promotion) }}</label>
+                    {{ form_widget(form.promotion,{'attr': {'class': 'form-control','placeholder': 'promotion'}})  }}
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group">
+                        <label>{{ form_label(form.media_offre) }}</label>
+                        {{ form_widget(form.media_offre,{'attr': {'class': 'form-control','placeholder':'media_offre'}})  }}
+                    </div>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+
+{{ form_end(form) }}
+            </div>
+
+</body>
+</html>
