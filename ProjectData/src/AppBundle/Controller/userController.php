@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use AppBundle\Entity\Utilisateur;
 
+use AppBundle\Entity\Media;
 
 class userController extends Controller
 {
@@ -24,7 +25,7 @@ class userController extends Controller
 
         $repository = $this->getDoctrine()->getRepository("AppBundle:Utilisateur");
         $personne = $repository->findAll();
-        return $this->render('@App/listuser.html.twig', array(
+        return $this->render('@App/user/listuser.html.twig', array(
             'Utilisateur' => $personne));
         dump($personne);
         die();
@@ -51,7 +52,7 @@ class userController extends Controller
             dump($personne);
 
             $em->persist($personne);
-            //Commit
+
             $em->flush();
         }
 
@@ -76,9 +77,16 @@ class userController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             dump($personne);
-
+//            die();
+            $m=new Media();
+            $m->setSource($personne->getPhotoProfil()->getClientOriginalName());
+            $m->setType($personne->getPhotoProfil()->getClientMimeType());
+            $personne->setPhotoProfil($m);
+            dump($personne);
+//            die();
+            $em->persist($m);
             $em->persist($personne);
-            //Commit
+
             $em->flush();
         }
         return $this->render('@App/user/updateuser.html.twig', array(

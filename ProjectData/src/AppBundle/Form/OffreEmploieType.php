@@ -24,8 +24,7 @@ class OffreEmploieType extends AbstractType
             ->add('salaire')
             ->add('promotion')
             ->add('media_offre',FileType::class);
-           // ->add('Save',SubmitType::class)
-           // ->add('Delete',SubmitType::class);
+
     }/**
      * {@inheritdoc}
      */

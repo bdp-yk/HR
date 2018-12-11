@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Departement;
 use AppBundle\Entity\Role;
+use AppBundle\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -11,6 +12,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 
 
 
@@ -51,9 +54,9 @@ class UtilisateurType extends AbstractType
                 'class' => Role::class,
                 'choice_label' => 'designation',
                 'attr' => array(
-                    'class' => 'select2'
-                )
-            ))
+                    'class' => 'select2')))
+
+            ->add('photo_profil', FileType::class)
 
       ->add('save',SubmitType::class);
 
