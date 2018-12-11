@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 use AppBundle\service\MailerService;
-
+use Symfony\Component\HttpFoundation\Response;
 
 
 
@@ -41,6 +41,8 @@ class SecurityControllerController extends Controller
         if($authchecker->isGranted('ROLE_ADMIN')){return $this->render('@App/testmail.html.twig');}
         else if ($authchecker->isGranted('ROLE_USER'))
         {return $this->render('@App/user.html.twig');}
+
+        else {return new Response('Invalid credentials');}
 
 
 

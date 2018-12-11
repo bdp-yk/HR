@@ -1,0 +1,3 @@
+{% extends "@Testing/index.html.twig" %}
+{% block contentheader %}{% endblock %}
+{% block contentbody %} {% endblock %}

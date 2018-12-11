@@ -1,0 +1,42 @@
+{% block body %}
+    <h1>Liste des candidatures</h1>
+
+    <table class="table align-items-center table-flush">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Page name</th>
+            <th scope="col">Visitors</th>
+            <th scope="col">Unique users</th>
+            <th scope="col">Bounce rate</th>
+        </tr>
+        </thead>
+        {% for personne in Utilisateur %}
+
+        <tbody>
+        <tr>
+            <th scope="row">
+
+                {{ personne.qualification }}
+            </th>
+            <td>
+
+                {{ personne.motivation }}
+            </td>
+
+            {% endfor %}
+
+
+
+
+
+        </tr>
+
+
+
+
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

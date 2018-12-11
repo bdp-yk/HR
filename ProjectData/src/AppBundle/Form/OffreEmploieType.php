@@ -6,6 +6,10 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+
 
 class OffreEmploieType extends AbstractType
 {
@@ -19,7 +23,7 @@ class OffreEmploieType extends AbstractType
             ->add('poste')
             ->add('salaire')
             ->add('promotion')
-            ->add('media_offre');
+            ->add('media_offre',FileType::class);
            // ->add('Save',SubmitType::class)
            // ->add('Delete',SubmitType::class);
     }/**

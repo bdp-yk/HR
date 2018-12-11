@@ -143,7 +143,7 @@ class Utilisateur
 
     /**
      * @var Departement
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Departement",inversedBy="liste_employes")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Departement",inversedBy="liste_employes")
      */
     private  $departement_associe;
 

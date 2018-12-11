@@ -2,42 +2,32 @@
 
 namespace AppBundle\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Candidature;
 use AppBundle\Form\CandidatureType;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-
-class candidatureController extends Controller
+class CandidateController extends Controller
 {
+
     /**
      * @Route("/addcandidature/{personne}")
      */
-    public function addindexAction(Request $request, Candidature $personne =null)
-
+    public function candidatureAction(Request $request, Candidature $personne =null)
     {
-
-        $personne = new Candidature();
+        if (!$personne)
+            $personne = new Candidature();
         $form = $this->createForm(CandidatureType::class, $personne);
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-
             $em = $this->getDoctrine()->getManager();
             dump($personne);
-
             $em->persist($personne);
-            //Commit
             $em->flush();
         }
         return $this->render('@App/x.html.twig', array(
             'form' => $form->createView()
         ));
-        /*return $this->render('AppBundle:Default:list',array(
-            'form' => $form->createView()
-        ));*/
-
 
     }
     /**
@@ -58,25 +48,29 @@ class candidatureController extends Controller
             dump($personne);
 
             $em->persist($personne);
-            //Commit
+
             $em->flush();
         }
-        return $this->render('@App/x.html.twig', array(
+        return $this->render('@App/index.html.twig', array(
             'form' => $form->createView()
         ));
-        /*return $this->render('AppBundle:Default:list',array(
-            'form' => $form->createView()
-        ));*/
+    }
 
-
-
-
-
+    /**
+     * @Route("/listcandidate",name="listingcandidate")
+     */
+    public function listAction(Request $request)
+    { $var=new Candidature();
+        $repository = $this->getDoctrine()->getRepository("AppBundle:Candidature");
+        $personne = $repository->findAll();
+        return $this->render('@App/candidature/listcandidate.html.twig', array(
+            'Utilisateur'=>$personne));
+        dump($personne);
+        die();
     }
     /**
-     * @Route("/deleteoffre/{candidature}")
+     * @Route("/deletecandidature/{candidature}")
      */
-
     public function deleteindexAction(Request $request, Candidature $candidature = null)
 
     {
@@ -85,29 +79,11 @@ class candidatureController extends Controller
         $em->remove($candidature);
         //Commit
         $em->flush();
-        return $this->redirectToRoute('ok');
-        // return $this->render('AppBundle/Default/list');
-        //return $this->render('@App/delete.html.twig');
-    }
-    /**
-     * @Route("/OK",name="ok")
-     */
-
-    public function listAction(Request $request)
-
-    { $var=new Candidature();
-
-
-        $repository = $this->getDoctrine()->getRepository("AppBundle:Candidature");
-        $personne = $repository->findAll();
-        return $this->render('@App/doc.html.twig', array(
-            'Utilisateur'=>$personne));
-        dump($personne);
-        die();
-
-
+        return $this->redirectToRoute('listingcandidate');
 
     }
+
+
 
 
 }

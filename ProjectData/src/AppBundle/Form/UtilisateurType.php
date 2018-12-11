@@ -2,10 +2,17 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Departement;
+use AppBundle\Entity\Role;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+
 
 class UtilisateurType extends AbstractType
 {
@@ -15,11 +22,11 @@ class UtilisateurType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $builder->add('nom')
-            ->add('prenom')
-            ->add('passeport')
-            ->add('cin')
-            ->add('ribBancaire')
+        $builder->add('nom',TextType::class)
+          ->add('prenom',TextType::class)
+          ->add('passeport',TextType::class)
+           ->add('cin',TextType::class)
+            ->add('ribBancaire',TextType::class)
             ->add('dateNaissance')
             ->add('dateEmploie')
             ->add('adresseMail')
@@ -27,14 +34,33 @@ class UtilisateurType extends AbstractType
             ->add('numeroTelephone')
             ->add('etatCivil')
             ->add('etatFamilial')
-            ->add('login')
+            ->add('login',TextType::class)
             ->add('password')
-            ->add('departement_associe')
-            ->add('evennements_adheres')
-            ->add('photo_profil')
-           ->add('role')
+            ->add('departement_associe',EntityType::class, array(
+
+                'class' => Departement::class,
+                'choice_label' => 'designation',
+                'attr' => array(
+                    'class' => 'select2'
+                )
+            ))
+
+
+            ->add('role', EntityType::class, array(
+
+                'class' => Role::class,
+                'choice_label' => 'designation',
+                'attr' => array(
+                    'class' => 'select2'
+                )
+            ))
+
       ->add('save',SubmitType::class);
-    }/**
+
+
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

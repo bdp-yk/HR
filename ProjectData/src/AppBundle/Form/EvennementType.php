@@ -2,7 +2,7 @@
 
 namespace AppBundle\Form;
 
-use AppBundle\Entity\OffreEmploie;
+use AppBundle\Entity\Media;
 use AppBundle\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -10,45 +10,48 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 
-class CandidatureType extends AbstractType
+
+class EvennementType extends AbstractType
 {
     /**
      * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('qualification')
-            ->add('motivation')
-          //  ->add('etatCandidature'(array
-            ->add('etatCandidature', ChoiceType::class, array(
-        'choices' => array(
-            '1' => true)))
-            ->add('offre_candidature', EntityType::class, array(
-
-                'class' => OffreEmploie::class,
-                'choice_label' => 'description',
-                'attr' => array(
-                    'class' => 'select2'
-                )
-            ))
-            ->add('utilisateur_candidat', EntityType::class, array(
+        $builder->add('title'
+        )->add('description')
+            ->add('dateDepart'
+            )->add('dateFin')
+            ->add('place')
+            ->add('organisateur')
+            ->add('descriptionOrganisateur')
+            ->add('accompagnement')
+            ->add('frais')
+            ->add('transport')
+            ->add('limitInscription')
+            ->add('responsable_evennement',EntityType::class, array(
 
                 'class' => Utilisateur::class,
                 'choice_label' => 'nom',
                 'attr' => array(
                     'class' => 'select2'
-                )
-            ))
-            ->add('save',SubmitType::class);
+
+            )))
+            ->add('media_event', FileType::class)
+        ->add('Submit',SubmitType::class);
+           // ->add('adherants')
+            //->add('media_event');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Candidature'
+            'data_class' => 'AppBundle\Entity\Evennement'
         ));
     }
 
@@ -57,7 +60,7 @@ class CandidatureType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_candidature';
+        return 'appbundle_evennement';
     }
 
 
