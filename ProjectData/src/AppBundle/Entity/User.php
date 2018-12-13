@@ -4,8 +4,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
-use FOS\UserBundle\Model\GroupInterface;
-use FOS\UserBundle\Model\User as BaseUser;
+use UserBundle\Model\GroupInterface;
+use UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

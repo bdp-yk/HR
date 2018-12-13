@@ -96,7 +96,7 @@ class RegistrationController extends Controller
             }
         }
 
-        return $this->render('@FOSUser/Registration/register.html.twig', array(
+        return $this->render('@App/Registration/register.html.twig', array(
             'form' => $form->createView(),
         ));
     }
@@ -119,7 +119,7 @@ class RegistrationController extends Controller
             return new RedirectResponse($this->container->get('router')->generate('fos_user_security_login'));
         }
 
-        return $this->render('@FOSUser/Registration/check_email.html.twig', array(
+        return $this->render('@App/Registration/check_email.html.twig', array(
             'user' => $user,
         ));
     }
