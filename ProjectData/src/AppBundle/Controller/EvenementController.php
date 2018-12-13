@@ -82,7 +82,7 @@ class EvenementController extends Controller
         $repository = $this->getDoctrine()->getRepository("AppBundle:Evennement");
         $personne = $repository->findAll();
         return $this->render('@App/event/listevent.html.twig', array(
-            'Utilisateur'=>$personne));
+            'User'=>$personne));
         dump($personne);
         die();
     }

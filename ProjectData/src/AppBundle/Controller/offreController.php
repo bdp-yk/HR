@@ -5,7 +5,7 @@ use AppBundle\AppBundle;
 use AppBundle\Entity\Media;
 
 use AppBundle\Entity\OffreEmploie;
-use AppBundle\Entity\Utilisateur;
+use AppBundle\Entity\User;
 use AppBundle\Form\OffreEmploieType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -83,7 +83,7 @@ class offreController extends Controller
         $repository = $this->getDoctrine()->getRepository("AppBundle:OffreEmploie");
         $offre = $repository->findAll();
         return $this->render('@App/event/listevent.html.twig', array(
-            'Utilisateur'=>$offre));
+            'User'=>$offre));
         dump($offre);
         die();
     }

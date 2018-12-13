@@ -7,7 +7,7 @@ use AppBundle\Form\UtilisateurType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use AppBundle\Entity\Utilisateur;
+use AppBundle\Entity\User;
 
 use AppBundle\Entity\Media;
 
@@ -20,13 +20,13 @@ class userController extends Controller
     public function listAction(Request $request)
 
     {
-        $var = new Utilisateur();
+        $var = new User();
 
 
-        $repository = $this->getDoctrine()->getRepository("AppBundle:Utilisateur");
+        $repository = $this->getDoctrine()->getRepository("User.php");
         $personne = $repository->findAll();
         return $this->render('@App/user/listuser.html.twig', array(
-            'Utilisateur' => $personne));
+            'User' => $personne));
         dump($personne);
         die();
 
@@ -37,11 +37,11 @@ class userController extends Controller
     /**
      * @Route("/update/{personne}")
      */
-    public function updateindexAction(Request $request, Utilisateur $personne = null)
+    public function updateindexAction(Request $request, User $personne = null)
 
     {
         if (!$personne)
-            $personne = new Utilisateur();
+            $personne = new User();
         $form = $this->createForm(UtilisateurType::class, $personne);
 
         $form->handleRequest($request);
@@ -64,11 +64,11 @@ class userController extends Controller
     /**
      * @Route("/add/{personne}")
      */
-    public function addindexAction(Request $request, Utilisateur $personne = null)
+    public function addindexAction(Request $request, User $personne = null)
 
     {
 
-        $personne = new Utilisateur();
+        $personne = new User();
         $form = $this->createForm(UtilisateurType::class, $personne);
 
         $form->handleRequest($request);
@@ -96,7 +96,7 @@ class userController extends Controller
     /**
      * @Route("/deleteuser/{user}")
      */
-    public function deleteindexAction(Request $request, Utilisateur $user = null)
+    public function deleteindexAction(Request $request, User $user = null)
 
     {
 

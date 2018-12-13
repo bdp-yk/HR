@@ -36,8 +36,8 @@ class Rating
     private $note;
 
     /**
-     * @var Utilisateur
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur",inversedBy="employe_ratings")
+     * @var User
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="employe_ratings")
      */
     private  $employe_concerne;
 
@@ -106,7 +106,7 @@ class Rating
     }
 
     /**
-     * @return Utilisateur
+     * @return User
      */
     public function getEmployeConcerne()
     {
@@ -114,7 +114,7 @@ class Rating
     }
 
     /**
-     * @param Utilisateur $employe_concerne
+     * @param User $employe_concerne
      * @return Rating
      */
     public function setEmployeConcerne($employe_concerne)

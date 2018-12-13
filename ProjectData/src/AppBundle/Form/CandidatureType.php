@@ -3,7 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\OffreEmploie;
-use AppBundle\Entity\Utilisateur;
+use AppBundle\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -35,7 +35,7 @@ class CandidatureType extends AbstractType
             ))
             ->add('utilisateur_candidat', EntityType::class, array(
 
-                'class' => Utilisateur::class,
+                'class' => User::class,
                 'choice_label' => 'nom',
                 'attr' => array(
                     'class' => 'select2'

@@ -64,7 +64,7 @@ class CandidateController extends Controller
         $repository = $this->getDoctrine()->getRepository("AppBundle:Candidature");
         $personne = $repository->findAll();
         return $this->render('@App/candidature/listcandidate.html.twig', array(
-            'Utilisateur'=>$personne));
+            'User'=>$personne));
         dump($personne);
         die();
     }

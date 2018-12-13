@@ -37,8 +37,8 @@ class Demande
 
 
     /**
-     * @var Utilisateur;
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Utilisateur")
+     * @var User;
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
      */
     private $employe_emetteur;
 
@@ -102,7 +102,7 @@ class Demande
     }
 
     /**
-     * @return Utilisateur
+     * @return User
      */
     public function getEmployeEmetteur()
     {
@@ -110,7 +110,7 @@ class Demande
     }
 
     /**
-     * @param Utilisateur $employe_emetteur
+     * @param User $employe_emetteur
      */
     public function setEmployeEmetteur($employe_emetteur)
     {
