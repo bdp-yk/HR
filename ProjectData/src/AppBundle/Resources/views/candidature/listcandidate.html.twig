@@ -1,13 +1,16 @@
-{% block body %}
+{% extends "@App/index.html.twig" %}
+                    {% block contentbody %}
     <h1>Liste des candidatures</h1>
 
     <table class="table align-items-center table-flush">
         <thead class="thead-light">
         <tr>
-            <th scope="col">Page name</th>
-            <th scope="col">Visitors</th>
-            <th scope="col">Unique users</th>
-            <th scope="col">Bounce rate</th>
+            <th scope="col">Id</th>
+            <th scope="col">Utilisateur_candidat_id</th>
+            <th scope="col">Offre_candidature_id</th>
+            <th scope="col">Etat_candidature</th>
+            <th scope="col">qualification</th>
+            <th scope="col">motivation</th>
         </tr>
         </thead>
         {% for personne in Utilisateur %}
@@ -15,12 +18,28 @@
         <tbody>
         <tr>
             <th scope="row">
-
-                {{ personne.qualification }}
+                {{ personne.id}}
             </th>
+            <td>
+                {{personne.utilisateur_candidat}}
+            </td>
+
+            <td>
+                {{personne.offre_candidature}}
+            </td>
+
+            <td>
+                {{personne.etat_candidature}}
+            </td>
+
+            <td>
+                {{  personne.qualification }}
+            </td>
+
             <td>
 
                 {{ personne.motivation }}
+
             </td>
 
             {% endfor %}

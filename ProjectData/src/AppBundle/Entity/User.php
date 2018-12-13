@@ -163,5 +163,10 @@ class User extends BaseUser
         return $this->lastLogin;
     }
 
+    public function __toString()
+   {
+
+    }
+
 
 }

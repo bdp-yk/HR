@@ -60,7 +60,7 @@ class CandidateController extends Controller
      * @Route("/listcandidate",name="listingcandidate")
      */
     public function listAction(Request $request)
-    { $var=new Candidature();
+    { $personne=new Candidature();
         $repository = $this->getDoctrine()->getRepository("AppBundle:Candidature");
         $personne = $repository->findAll();
         return $this->render('@App/candidature/listcandidate.html.twig', array(

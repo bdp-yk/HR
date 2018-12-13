@@ -22,8 +22,8 @@ class EvennementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title'
-        )->add('description')
+        $builder->add('title')
+            ->add('description')
             ->add('dateDepart'
             )->add('dateFin')
             ->add('place')

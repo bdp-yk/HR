@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Utilisateur
@@ -30,7 +31,7 @@ class Utilisateur
 
     /**
      * @var string
-     *
+     *@Assert\NotBlank( message = " Ce champ ne doit pas être vide ")
      * @ORM\Column(name="prenom", type="string", length=255)
      */
     private $prenom;
@@ -661,6 +662,11 @@ class Utilisateur
     {
         $this->role = $role;
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getNom();
     }
 
 

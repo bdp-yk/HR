@@ -60,7 +60,6 @@ class UtilisateurType extends AbstractType
 
       ->add('save',SubmitType::class);
 
-
     }
 
     /**

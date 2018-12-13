@@ -39,7 +39,7 @@ class EvenementController extends Controller
             //Commit
             $em->flush();
         }
-        return $this->render('@App/x.html.twig', array(
+        return $this->render('@App/event/update_insert.html.twig', array(
             'form' => $form->createView()
         ));
 
@@ -68,7 +68,7 @@ class EvenementController extends Controller
             $em->persist($event);
             $em->flush();
         }
-        return $this->render('@App/x.html.twig', array(
+        return $this->render('@App/event/update_insert.html.twig', array(
             'form' => $form->createView()
         ));
 
@@ -80,11 +80,13 @@ class EvenementController extends Controller
     public function listAction(Request $request)
     { $var=new Evennement();
         $repository = $this->getDoctrine()->getRepository("AppBundle:Evennement");
-        $personne = $repository->findAll();
+        $evenements = $repository->findAll();
+
+        dump($evenements[0]);
+//        die();
         return $this->render('@App/event/listevent.html.twig', array(
-            'Utilisateur'=>$personne));
-        dump($personne);
-        die();
+            'evennements'=>$evenements));
+
     }
 
     /**
