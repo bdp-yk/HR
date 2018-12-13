@@ -1,8 +1,75 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+
+
+
+<div class="card-header bg-transparent pb-5">
+    <div class="text-muted text-center mt-2 mb-4">
+        <small>Sign up with</small>
     </div>
-{{ form_end(form) }}
+    <div class="text-center">
+        <a href="#" class="btn btn-neutral btn-icon mr-4">
+            <span class="btn-inner--icon"><img src="{{ asset('assets/img/icons/common/github.svg') }}"></span>
+            <span class="btn-inner--text">Github</span>
+        </a>
+        <a href="#" class="btn btn-neutral btn-icon">
+            <span class="btn-inner--icon"><img src="{{ asset('assets/img/icons/common/google.svg') }}"></span>
+            <span class="btn-inner--text">Google</span>
+        </a>
+    </div>
+</div>
+<div class="card-body px-lg-5 py-lg-5">
+    <div class="text-center text-muted mb-4">
+        <small>Or sign up with credentials</small>
+    </div>
+
+    {#<form action="{{ path("fos_user_security_check") }}" method="post">#}
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+        {#{% if csrf_token %}#}
+            {#<input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>#}
+        {#{% endif %}#}
+        {#<div class="form-group">#}
+            {#<div class="input-group input-group-alternative mb-3">#}
+                {#<div class="input-group-prepend">#}
+                    {#<span class="input-group-text"><i class="ni ni-hat-3"></i></span>#}
+                {#</div>#}
+                {#<input type="text"  class="form-control" id="username" name="_username" value="{{ last_username }}" required="required"#}
+                       {#autocomplete="username"/>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="form-group">#}
+            {#<div class="input-group input-group-alternative mb-3">#}
+                {#<div class="input-group-prepend">#}
+                    {#<span class="input-group-text"><i class="ni ni-key-25"></i></span>#}
+                {#</div>#}
+                {#<input type="password" class="form-control" id="password" name="_password" required="required"#}
+                       {#autocomplete="current-password"/>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="row my-4">#}
+            {#<div class="col-12">#}
+
+                {#<div class="custom-control custom-control-alternative custom-checkbox">#}
+                    {#<input type="checkbox" class="custom-control-input" id="remember_me" name="_remember_me" value="on" >#}
+                    {#<label class="custom-control-label" for="customCheckRegister">#}
+                        {#<span class="text-muted">{{ 'security.login.remember_me'|trans }}</span>#}
+                    {#</label>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="text-center">#}
+            {#<input type="submit" class="btn btn-primary mt-4" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}"/>#}
+        {#</div>#}
+
+    {{ form_widget(form) }}
+    <br/>
+    <br/>
+    <div class="text-center">
+        <input type="submit" class="btn btn-success" value="{{ 'registration.submit'|trans }}" />
+    </div>
+    {#</form>#}
+    {{ form_end(form) }}
+
+</div>
+

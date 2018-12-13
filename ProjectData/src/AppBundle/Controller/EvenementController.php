@@ -86,7 +86,6 @@ class EvenementController extends Controller
 //        die();
         return $this->render('@App/event/listevent.html.twig', array(
             'evennements'=>$evenements));
-
     }
 
     /**

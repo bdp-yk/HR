@@ -100,15 +100,15 @@ class Evennement
 
 
     /**
-     * @var Utilisateur
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur",inversedBy="evennements_proposes")
+     * @var User
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="evennements_proposes")
      */
     private $responsable_evennement;
 
 
     /**
-     * @var Utilisateur[]
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Utilisateur")
+     * @var User[]
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User")
      */
     private $adherants;
 
@@ -396,7 +396,7 @@ class Evennement
     }
 
     /**
-     * @return Utilisateur
+     * @return User
      */
     public function getResponsableEvennement()
     {
@@ -404,7 +404,7 @@ class Evennement
     }
 
     /**
-     * @param Utilisateur $responsable_evennement
+     * @param User $responsable_evennement
      * @return Evennement
      */
     public function setResponsableEvennement($responsable_evennement)
@@ -414,7 +414,7 @@ class Evennement
     }
 
     /**
-     * @return Utilisateur[]
+     * @return User[]
      */
     public function getAdherants()
     {
@@ -422,7 +422,7 @@ class Evennement
     }
 
     /**
-     * @param Utilisateur[] $adherants
+     * @param User[] $adherants
      * @return Evennement
      */
     public function setAdherants($adherants)

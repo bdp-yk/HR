@@ -1,48 +1,5 @@
+{% extends "@App/WelcomeLayout.html.twig" %}
 
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
-    <title>{% block pagetitle %}HR Manager{% endblock %}</title>
-    <!-- Favicon -->
-    <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-    {% block css %}
-        <!-- Icons -->
-        <link href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-        <link href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-        <!-- Argon CSS -->
-        <link type="text/css" href="{{ asset('assets/css/argon.css?v=1.0.0') }}" rel="stylesheet">
-    {% endblock %}
-</head>
-<body>
-
-
-<form action="{{ path("fos_user_security_check") }}" method="post">
-    {% if csrf_token %}
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-    {% endif %}
-    {% if (error) %}
-
-        <div class="alert alert-warning" role="alert">
-         Invalid Credentials!
-        </div>
-    {% endif %}
-    <label for="username">Username:</label>
-    <input Class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
-
-    <label for="password">Password:</label>
-    <input Class="form-control"type="password" id="password" name="_password" />
-
-
-
-    <button Class="btn btn-facebook"type="submit">Submit</button>
-
-</form>
-</body>
-</html>
+{% block fos_user_content %}
+    {{ include('@App/Security/login_content.html.twig') }}
+{% endblock fos_user_content %}

@@ -37,8 +37,8 @@ class Departement
 
 
     /**
-     * @var Utilisateur[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Utilisateur",mappedBy="departement_associe")
+     * @var User[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\User",mappedBy="departement_associe")
      */
     private $liste_employes;
 

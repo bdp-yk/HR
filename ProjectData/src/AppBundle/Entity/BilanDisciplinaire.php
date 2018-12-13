@@ -44,9 +44,9 @@ class BilanDisciplinaire
 
 
     /**
-     * var Utilisateur
+     * var User
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur",inversedBy="bilans_responsable")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="bilans_responsable")
      */
     private $responsable;
 

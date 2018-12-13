@@ -2,6 +2,7 @@
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
+        UserBundle\Model\UserInterface: bcrypt
 
 
 

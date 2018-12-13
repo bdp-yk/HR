@@ -51,8 +51,8 @@ class Absence
 
 
     /**
-     * var Utilisateur
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Utilisateur")
+     * var User
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
      */
     private $utilisateur;
 

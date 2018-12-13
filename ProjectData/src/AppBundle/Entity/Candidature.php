@@ -45,8 +45,8 @@ class Candidature
 
 
     /**
-     * @var Utilisateur
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Utilisateur",inversedBy="liste_candidature")
+     * @var User
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User",inversedBy="liste_candidature")
      */
     private $utilisateur_candidat;
 
@@ -148,7 +148,7 @@ class Candidature
     }
 
     /**
-     * @return Utilisateur
+     * @return User
      */
     public function getUtilisateurCandidat()
     {
@@ -156,7 +156,7 @@ class Candidature
     }
 
     /**
-     * @param Utilisateur $utilisateur_candidat
+     * @param User $utilisateur_candidat
      * @return Candidature
      */
     public function setUtilisateurCandidat($utilisateur_candidat)
