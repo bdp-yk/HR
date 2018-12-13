@@ -3,18 +3,17 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Departement;
-use AppBundle\Entity\Role;
-use AppBundle\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
-
-
 
 
 class UtilisateurType extends AbstractType
@@ -22,39 +21,61 @@ class UtilisateurType extends AbstractType
     /**
      * {@inheritdoc}
      */
+
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-
-        $builder->add('nom',TextType::class)
-          ->add('prenom',TextType::class)
-          ->add('passeport',TextType::class)
-           ->add('cin',TextType::class)
-            ->add('ribBancaire',TextType::class)
-            ->add('dateNaissance')
-            ->add('dateEmploie')
-            ->add('adresseMail')
-            ->add('adresseVille')
-            ->add('numeroTelephone')
-            ->add('etatCivil')
-            ->add('etatFamilial')
-            ->add('login',TextType::class)
-            ->add('password')
-            ->add('departement_associe',EntityType::class, array(
+        $builder
+            ->add('email', EmailType::class, array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle', 'attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('nom', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('prenom', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('passeport', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('cin', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('ribBancaire', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('dateNaissance', DateType::class, array('attr' => array(
+                'class' => 'form-control datepicker'
+            )))
+            ->add('dateEmploie', DateType::class, array('attr' => array(
+                'class' => 'form-control datepicker'
+            )))
+            ->add('adresseVille', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('numeroTelephone', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('etatCivil', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('etatFamilial', TextType::class, array('attr' => array(
+                'class' => 'form-control'
+            )))
+            ->add('departement_associe', EntityType::class, array(
 
                 'class' => Departement::class,
                 'choice_label' => 'designation',
                 'attr' => array(
-                    'class' => 'select2'
+                    'class' => 'select2 form-control py-2'
                 )
-            ))
-
-
-            ->add('photo_profil', FileType::class)
-
-      ->add('save',SubmitType::class);
-
+            ));
 
     }
+
 
     /**
      * {@inheritdoc}
@@ -71,7 +92,7 @@ class UtilisateurType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_utilisateur';
+        return 'appbundle_user';
     }
 
 

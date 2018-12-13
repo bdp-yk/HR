@@ -17,6 +17,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
@@ -79,10 +80,10 @@ class RegistrationFormType extends AbstractType
             ->add('ribBancaire', TextType::class, array('attr' => array(
                 'class' => 'form-control'
             )))
-            ->add('dateNaissance', TextType::class, array('attr' => array(
+            ->add('dateNaissance', DateType::class, array('attr' => array(
                 'class' => 'form-control datepicker'
             )))
-            ->add('dateEmploie', TextType::class, array('attr' => array(
+            ->add('dateEmploie', DateType::class, array('attr' => array(
                 'class' => 'form-control datepicker'
             )))
             ->add('adresseVille', TextType::class, array('attr' => array(
@@ -102,10 +103,10 @@ class RegistrationFormType extends AbstractType
                 'class' => Departement::class,
                 'choice_label' => 'designation',
                 'attr' => array(
-                    'class' => 'select2'
+                    'class' => 'select2 form-control py-2'
                 )
-            ))
-            ->add('photo_profil', FileType::class, array('attr' => array('class' => 'file-input')));
+            ));
+
     }
 
     /**

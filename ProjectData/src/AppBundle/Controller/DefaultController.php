@@ -18,6 +18,8 @@ class DefaultController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      * @Route("dashboard")
      */
+
+
     public function indexAction($name)
     {
         return $this->render('@App/index.html.twig');
