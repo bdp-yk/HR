@@ -16,7 +16,7 @@ class DefaultController extends Controller
     /**
      * @param $name
      * @return \Symfony\Component\HttpFoundation\Response
-     * @Route("/dashboard",name="d")
+     * @Route("/")
      */
 
 

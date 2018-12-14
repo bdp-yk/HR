@@ -11,6 +11,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class offreController
+ * @package AppBundle\Controller
+ * @Route("/offre")
+ */
 class offreController extends Controller
 {
     /**
@@ -77,7 +82,7 @@ class offreController extends Controller
 
     }
     /**
-     * @Route("/listoffre",name="listingoffre")
+     * @Route("/",name="listingoffre")
      */
     public function listAction(Request $request)
     { $var=new OffreEmploie();

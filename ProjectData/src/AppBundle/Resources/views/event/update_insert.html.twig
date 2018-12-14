@@ -1,4 +1,26 @@
 {% extends "@App/HomeLayout.html.twig" %}
+{% block css %}
+    {{ parent() }}
+    <script src="{{ asset('node_modules/select2/dist/css/select2.css') }}"></script>
+
+{% endblock %}
+{% block contentheader %}
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+         style="min-height: 600px; background-image: url({{ asset('../assets/img/theme/profile-cover.jpg') }}); background-size: cover; background-position: center top;">
+        <!-- Mask -->
+        <span class="mask bg-gradient-default opacity-8"></span>
+        <!-- Header container -->
+        <div class="container-fluid d-flex align-items-center">
+            <div class="row">
+                <div class="col-lg-7 col-md-10">
+                    <h1 class="display-2 text-white">Events Lists </h1>
+                    <p class="text-white mt-0 mb-5">Here is the list of all Events...</p>
+                    <a href="{{ path('eventadd') }}" class="btn btn-info">Manage Teams</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
 
 {% block contentbody %}
     <div class="container-fluid mt--7">
@@ -16,7 +38,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        {{form(form)}}
+                        {{ form(form) }}
                     </div>
                 </div>
             </div>

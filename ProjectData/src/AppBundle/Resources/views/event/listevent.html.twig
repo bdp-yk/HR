@@ -19,101 +19,101 @@
         </div>
     </div>
 {% endblock %}
-  {% block contentbody %}
+{% block contentbody %}
 
-      <div class="container-fluid mt--7">
-          <!-- Table -->
-          <div class="row">
-              <div class="col">
-                  <div class="card shadow">
-                      <div class="card-header border-0">
-                          <h3 class="mb-0">Card tables</h3>
-                      </div>
-                      <div class="table-responsive">
-                          <table class="table align-items-center table-flush">
-                              <thead class="thead-light">
-                              <tr>
-                                  <th scope="col">Responsable_evennement</th>
-                                  <th scope="col">Media_event</th>
-                                  <th scope="col">Title</th>
-                                  <th scope="col">Description</th>
-                                  <th scope="col">DateDepart</th>
-                                  <th scope="col">DateFin</th>
-                                  <th scope="col">Organisateur</th>
-                                  <th scope="col">DescriptionOrganisateur</th>
-                                  <th scope="col">Accompagnement</th>
-                                  <th scope="col">Frais</th>
-                                  <th scope="col">Transport</th>
-                                  <th scope="col">LimitInscription</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              {% for ev in evennements %}
+    <div class="container-fluid mt--7">
+        <!-- Table -->
+        <div class="row">
+            <div class="col">
+                <div class="card shadow">
+                    <div class="card-header border-0">
+                        <h3 class="mb-0">Card tables</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-items-center table-flush">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Responsable_evennement</th>
+                                <th scope="col">Media_event</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">DateDepart</th>
+                                <th scope="col">DateFin</th>
+                                <th scope="col">Organisateur</th>
+                                <th scope="col">DescriptionOrganisateur</th>
+                                <th scope="col">Accompagnement</th>
+                                <th scope="col">Frais</th>
+                                <th scope="col">Transport</th>
+                                <th scope="col">LimitInscription</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for ev in evennements %}
 
-                                  <tr>
+                                <tr>
 
-                                      <td> {{ ev.getResponsableEvennement() }} </td>
-                                      <td> {{ ev.getMediaEvent().getId() }}   </td>
-                                      <td> {{ ev.id }}     </td>
+                                    <td> {{ ev.getResponsableEvennement() }} </td>
+                                    <td> {{ ev.getMediaEvent().getId() }}   </td>
+                                    <td> {{ ev.id }}     </td>
 
-                                      <th>
+                                    <th>
 
-                                          {{ ev.title }}
-                                      </th>
+                                        {{ ev.title }}
+                                    </th>
 
-                                      <td>
+                                    <td>
 
-                                          {{ ev.description }}
+                                        {{ ev.description }}
 
-                                      </td>
-
-
-                                      {{ ev.dateDepart|date("m/d/y") }}
-                                      </td>
-                                      <td>
-
-                                          {{ ev.dateFin|date("m/d/y") }}
-                                      </td>
-                                      <td>
-
-                                          {{ ev.place }}
-                                      </td>
-                                      <td>
-
-                                          {{ ev.organisateur }}
-                                      </td>
-                                      <td>
-
-                                          {{ ev.descriptionOrganisateur }}
-                                      </td>
-                                      <td>
-
-                                          {{ ev.accompagnement }}
-                                      </td>
-                                      <td>
-
-                                          {{ ev.frais }}
-                                      </td>
-                                      <td>
-
-                                          {{ ev.transport }}
-                                      </td>
-                                      <td>
-
-                                          {{ ev.limitInscription }}
-                                      </td>
+                                    </td>
 
 
-                                  </tr>
+                                    {{ ev.dateDepart|date("m/d/y") }}
+                                    </td>
+                                    <td>
 
-                              {% endfor %}
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
+                                        {{ ev.dateFin|date("m/d/y") }}
+                                    </td>
+                                    <td>
+
+                                        {{ ev.place }}
+                                    </td>
+                                    <td>
+
+                                        {{ ev.organisateur }}
+                                    </td>
+                                    <td>
+
+                                        {{ ev.descriptionOrganisateur }}
+                                    </td>
+                                    <td>
+
+                                        {{ ev.accompagnement }}
+                                    </td>
+                                    <td>
+
+                                        {{ ev.frais }}
+                                    </td>
+                                    <td>
+
+                                        {{ ev.transport }}
+                                    </td>
+                                    <td>
+
+                                        {{ ev.limitInscription }}
+                                    </td>
 
 
-  {% endblock %}
+                                </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

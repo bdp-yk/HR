@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvenementController extends Controller
 {
     /**
-     * @Route("/addevent/{event}")
+     * @Route("/addevent/{event}",name="eventadd")
      */
     public function addoffreAction(Request $request, Evennement $event = null)
 
@@ -36,8 +36,12 @@ class EvenementController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $m = new Media();
-            $m->setSource($event->getMediaEvent()->getClientOriginalName());
-            $m->setType($event->getMediaEvent()->getClientMimeType());
+//            $m->setSource($event->getMediaEvent()->getClientOriginalName());
+//            $m->setType($event->getMediaEvent()->getClientMimeType());
+            $m->setSource("");
+
+            $m->setType("");
+
             $event->setMediaEvent($m);
             dump($event);
 
@@ -46,7 +50,7 @@ class EvenementController extends Controller
             //Commit
             $em->flush();
 
-            $data['message'] = "Nouveau Event!";
+            $data['message'] = $event->getTitle();
             $data['link'] = "/event/display/" . $event->getId();
             ServiceProvidingItem::notifier('event-update', $data);
         }
