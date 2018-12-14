@@ -9,6 +9,8 @@
 namespace AppBundle\FeaturedServices;
 
 
+use Pusher\Pusher;
+
 class ServiceProvidingItem
 {
 
@@ -32,8 +34,11 @@ class ServiceProvidingItem
             $options
         );
 
-        $data['message'] = $message;
-        $pusher->trigger('event-notifier', $eventupdate, $data);
+//        event-notifier
+//
+//          event-update
+
+        $pusher->trigger('event-notifier', $eventupdate, $message);
 
 //        return $this->redirectToRoute('listingoffre');
     }

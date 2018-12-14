@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Evennement;
 use AppBundle\Entity\Media;
+use AppBundle\FeaturedServices\ServiceProvidingItem;
 use http\Env\Response;
 use Pusher\Pusher;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -35,7 +36,7 @@ class EvenementController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
-            $m=new Media();
+            $m = new Media();
             $m->setSource($event->getMediaEvent()->getClientOriginalName());
             $m->setType($event->getMediaEvent()->getClientMimeType());
             $event->setMediaEvent($m);
@@ -45,12 +46,14 @@ class EvenementController extends Controller
             $em->persist($event);
             //Commit
             $em->flush();
-            $this->notifier($event->getTitle(),$event->getId());
+
+            $data['message'] = "Nouveau Event!";
+            $data['link'] = "/event/display/" . $event->getId();
+            ServiceProvidingItem::notifier('event-update', $data);
         }
         return $this->render('@App/event/update_insert.html.twig', array(
             'form' => $form->createView()
         ));
-
 
 
     }
@@ -82,28 +85,39 @@ class EvenementController extends Controller
 
 
     }
+
     /**
      * @Route("/",name="listing")
      */
     public function listAction(Request $request)
-    { $var=new Evennement();
+    {
+        $var = new Evennement();
         $repository = $this->getDoctrine()->getRepository("AppBundle:Evennement");
         $evenements = $repository->findAll();
-//        dump($evenements);
-//        die();
-//
-
-        //dump($evenements[0]);
-//        die();
         return $this->render('@App/event/listevent.html.twig', array(
-            'evennements'=>$evenements));
+            'evennements' => $evenements));
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @Route("/display/{id}")
+     */
+    public function displayEventAction(Request $request,int $id)
+    {
+        $repository = $this->getDoctrine()->getRepository(Evennement::class);
+
+        $evenement = $repository->findOneBy(array("id"=>$id));
+        return $this->render('@App/event/display.html.twig', array(
+            'evenement' => $evenement));
+    }
+
 
     /**
      * @Route("/deleteevent/{event}")
      */
 
-    public function deleteindexAction(Request $request,Evennement $event = null)
+    public function deleteindexAction(Request $request, Evennement $event = null)
 
     {
 
