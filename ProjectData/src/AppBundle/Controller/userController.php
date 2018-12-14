@@ -79,8 +79,8 @@ class userController extends Controller
             dump($personne);
 //            die();
             $m=new Media();
-            $m->setSource($personne->getPhotoProfil()->getClientOriginalName());
-            $m->setType($personne->getPhotoProfil()->getClientMimeType());
+            $m->setSource("ezaeza.png");
+            $m->setType("aaaa");
             $personne->setPhotoProfil($m);
             dump($personne);
 //            die();

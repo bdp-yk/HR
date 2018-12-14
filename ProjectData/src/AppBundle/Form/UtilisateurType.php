@@ -47,11 +47,11 @@ class UtilisateurType extends AbstractType
             ->add('ribBancaire', TextType::class, array('attr' => array(
                 'class' => 'form-control'
             )))
-            ->add('dateNaissance', DateType::class, array('attr' => array(
-                'class' => 'form-control datepicker'
+            ->add('dateNaissance', TextType::class, array('attr' => array(
+                'class' => 'form-control '
             )))
-            ->add('dateEmploie', DateType::class, array('attr' => array(
-                'class' => 'form-control datepicker'
+            ->add('dateEmploie', TextType::class, array('attr' => array(
+                'class' => 'form-control'
             )))
             ->add('adresseVille', TextType::class, array('attr' => array(
                 'class' => 'form-control'
@@ -72,7 +72,8 @@ class UtilisateurType extends AbstractType
                 'attr' => array(
                     'class' => 'select2 form-control py-2'
                 )
-            ));
+            ))
+            ->add('Submit',SubmitType::class);
 
     }
 

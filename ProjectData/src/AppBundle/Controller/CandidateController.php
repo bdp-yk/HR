@@ -51,7 +51,7 @@ class CandidateController extends Controller
 
             $em->flush();
         }
-        return $this->render('@App/index.html.twig', array(
+        return $this->render('@App/candidature/update_insert.html.twig', array(
             'form' => $form->createView()
         ));
     }

@@ -65,7 +65,7 @@ swiftmailer:
     transport: gmail
     host: smtp.gmail.com
     username: 'khlifizouhaier9@gmail.com'
-    password: 'alphag55'
+    password: 'alphag555'
     spool: { type: memory }
     stream_options:
         ssl:

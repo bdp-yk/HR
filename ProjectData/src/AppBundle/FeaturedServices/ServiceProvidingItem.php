@@ -25,7 +25,7 @@ class ServiceProvidingItem
             'cluster' => 'eu',
             'useTLS' => true
         );
-        $pusher = new Pusher(
+        $pusher = new Pusher\Pusher(
             'e59775b63526c7a39ddf',
             '90488c426ffdccc3dc1f',
             '672117',

@@ -1,4 +1,4 @@
-{% extends "@App/index.html.twig" %}
+
 
   {% block contentbody %}
     <h1>Liste des evenements</h1>
@@ -7,9 +7,9 @@
         <thead class="thead-light">
         <tr>
 
-            <th>Id </th>
-            <th>Responsable_evennement </th>
-            <th>Media_event</th>
+            <th scope="col"> Id </th>
+            <th scope="col"> Responsable_evennement </th>
+            <th scope="col"> Media_event</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">DateDepart</th>
@@ -47,6 +47,7 @@
 
                 {{ personne.dateDepart|date("m/d/y") }}
             </td>
+
             <td>
 
                 {{ personne.dateFin|date("m/d/y") }}

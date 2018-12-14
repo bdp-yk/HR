@@ -41,7 +41,7 @@ class EvennementType extends AbstractType
                     'class' => 'select2'
 
             )))
-            ->add('media_event', FileType::class)
+          //  ->add('media_event', FileType::class)
         ->add('Submit',SubmitType::class);
            // ->add('adherants')
             //->add('media_event');

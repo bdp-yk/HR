@@ -4,8 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Evennement;
 use AppBundle\Entity\Media;
+use AppBundle\FeaturedServices\ServiceProvidingItem;
 use http\Env\Response;
-use Pusher\Pusher;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Form\EvennementType;
@@ -40,7 +40,7 @@ class EvenementController extends Controller
             $em->persist($event);
             //Commit
             $em->flush();
-            $this->notifier($event->getTitle(),$event->getId());
+            //ServiceProvidingItem::notifier($event->getTitle(),$event->getId());
         }
         return $this->render('@App/event/update_insert.html.twig', array(
             'form' => $form->createView()
