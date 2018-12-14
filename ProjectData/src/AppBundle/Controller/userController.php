@@ -23,10 +23,10 @@ class userController extends Controller
         $var = new User();
 
 
-        $repository = $this->getDoctrine()->getRepository("User.php");
+        $repository = $this->getDoctrine()->getRepository(User::class);
         $personne = $repository->findAll();
         return $this->render('@App/user/listuser.html.twig', array(
-            'User' => $personne));
+            'Utilisateur' => $personne));
         dump($personne);
         die();
 

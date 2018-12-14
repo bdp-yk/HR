@@ -83,7 +83,7 @@ class offreController extends Controller
         $repository = $this->getDoctrine()->getRepository("AppBundle:OffreEmploie");
         $offre = $repository->findAll();
         return $this->render('@App/event/listevent.html.twig', array(
-            'User'=>$offre));
+            'Utilisateur'=>$offre));
         dump($offre);
         die();
     }
