@@ -22,16 +22,16 @@ class Absence
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="date_debut", type="date")
+     * @ORM\Column(name="date_debut", type="string")
      */
     private $dateDebut;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="date_fin", type="date")
+     * @ORM\Column(name="date_fin", type="string")
      */
     private $dateFin;
 
@@ -75,7 +75,7 @@ class Absence
     /**
      * Set dateDebut
      *
-     * @param \DateTime $dateDebut
+     * @param \string $dateDebut
      *
      * @return Absence
      */
@@ -89,7 +89,7 @@ class Absence
     /**
      * Get dateDebut
      *
-     * @return \DateTime
+     * @return \string
      */
     public function getDateDebut()
     {
@@ -99,7 +99,7 @@ class Absence
     /**
      * Set dateFin
      *
-     * @param \DateTime $dateFin
+     * @param \string $dateFin
      *
      * @return Absence
      */
@@ -113,7 +113,7 @@ class Absence
     /**
      * Get dateFin
      *
-     * @return \DateTime
+     * @return \string
      */
     public function getDateFin()
     {

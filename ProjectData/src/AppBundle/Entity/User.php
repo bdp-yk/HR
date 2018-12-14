@@ -57,16 +57,16 @@ class User extends BaseUser
     private $ribBancaire;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="date_naissance", type="date",nullable=true)
+     * @ORM\Column(name="date_naissance", type="string",nullable=true)
      */
     private $dateNaissance;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="date_emploie", type="date",nullable=true)
+     * @ORM\Column(name="date_emploie", type="string",nullable=true)
      */
     private $dateEmploie;
 
@@ -288,7 +288,7 @@ class User extends BaseUser
     }
 
     /**
-     * @return \DateTime|null
+     * @return string|null
      */
     public function getLastLogin()
     {
@@ -332,7 +332,7 @@ class User extends BaseUser
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getDateNaissance()
     {
@@ -340,7 +340,7 @@ class User extends BaseUser
     }
 
     /**
-     * @param \DateTime $dateNaissance
+     * @param string $dateNaissance
      * @return User
      */
     public function setDateNaissance($dateNaissance)
@@ -350,7 +350,7 @@ class User extends BaseUser
     }
 
     /**
-     * @return \DateTime
+     * @return string
      */
     public function getDateEmploie()
     {
@@ -358,7 +358,7 @@ class User extends BaseUser
     }
 
     /**
-     * @param \DateTime $dateEmploie
+     * @param string $dateEmploie
      * @return User
      */
     public function setDateEmploie($dateEmploie)

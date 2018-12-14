@@ -80,10 +80,10 @@ class RegistrationFormType extends AbstractType
             ->add('ribBancaire', TextType::class, array('attr' => array(
                 'class' => 'form-control'
             )))
-            ->add('dateNaissance', DateType::class, array('attr' => array(
+            ->add('dateNaissance', TextType::class, array('attr' => array(
                 'class' => 'form-control datepicker'
             )))
-            ->add('dateEmploie', DateType::class, array('attr' => array(
+            ->add('dateEmploie', TextType::class, array('attr' => array(
                 'class' => 'form-control datepicker'
             )))
             ->add('adresseVille', TextType::class, array('attr' => array(

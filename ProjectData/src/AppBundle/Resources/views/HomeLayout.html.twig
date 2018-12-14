@@ -1,6 +1,6 @@
-{{ set }}
 
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -20,9 +20,37 @@
         <!-- Argon CSS -->
         <link type="text/css" href="{{ asset('assets/css/argon.css?v=1.0.0') }}" rel="stylesheet">
     {% endblock %}
+    <script src="{{ asset('node_modules/pusher-js/dist/web/pusher.min.js') }}"></script>
+
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('e59775b63526c7a39ddf', {
+            cluster: 'eu',
+            forceTLS: true
+        });
+
+        var channel = pusher.subscribe('event-notifier');
+        channel.bind('event-update', function(data) {
+            console.log(JSON.stringify(data));
+            $("#notifier").alert();
+        });
+    </script>
+
 </head>
 
 <body>
+
+{% set general_routes = {
+    'Dashboard' :{'icon' : 'ni-tv-2', 'route' : '/login'},
+    "Event" : {'icon' : 'ni-planet', 'route' : '/'},
+    "Absence" : {'icon' : 'ni-ui-04', 'route' : '/'},
+    "Jobs" : {'icon' : 'ni-folder-17', 'route' : '/'},
+    "Team" : {'icon' : 'ni-spaceship', 'route' : '/'},
+
+} %}
 <!-- Sidenav -->
 <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
@@ -121,13 +149,13 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
-                {{ for i in constant('AppBundle\\Default') }}
+                {% for slug, item in general_routes %}
                     <li class="nav-item">
-                        <a class="nav-link" href="/">
-                            <i class="ni ni-tv-2 text-primary"></i> Dashboard
+                        <a class="nav-link" href="{{ item.route }}">
+                            <i class="ni {{ item.icon }} text-primary"></i> {{ slug }}
                         </a>
                     </li>
-                {% endblock %}
+                {% endfor %}
             </ul>
             <!-- Divider -->
             <hr class="my-3">
@@ -272,6 +300,9 @@
             </div>
         </footer>
     </div>
+</div>
+<div class="alert alert-danger" role="alert" id="notifier">
+    This is a danger alert—check it out!
 </div>
 <!-- Argon Scripts -->
 <!-- Core -->

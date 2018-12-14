@@ -22,9 +22,9 @@ class BilanDisciplinaire
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="date_bilan", type="date")
+     * @ORM\Column(name="date_bilan", type="string")
      */
     private $dateBilan;
 
@@ -68,7 +68,7 @@ class BilanDisciplinaire
     /**
      * Set dateBilan
      *
-     * @param \DateTime $dateBilan
+     * @param \string $dateBilan
      *
      * @return BilanDisciplinaire
      */
@@ -82,7 +82,7 @@ class BilanDisciplinaire
     /**
      * Get dateBilan
      *
-     * @return \DateTime
+     * @return \string
      */
     public function getDateBilan()
     {

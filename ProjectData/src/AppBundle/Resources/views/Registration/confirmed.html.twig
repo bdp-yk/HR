@@ -1,4 +1,4 @@
-{% extends "@FOSUser/layout.html.twig" %}
+{% extends "@App/WelcomeLayout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
@@ -7,9 +7,11 @@
     {% if targetUrl %}
     <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
     {% endif %}
-{% endblock fos_user_content %}
+{% endblock  %}
+{% block javascripto %}
 <script type="text/javascript">
     setTimeout(()=>{
-        window.location.href=""
-    })
+        window.location.href="/dashboard"
+    },3000)
 </script>
+{% endblock %}

@@ -36,16 +36,16 @@ class Evennement
     private $description;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="date_depart", type="date")
+     * @ORM\Column(name="date_depart", type="string")
      */
     private $dateDepart;
 
     /**
-     * @var \DateTime
+     * @var \string
      *
-     * @ORM\Column(name="date_fin", type="date")
+     * @ORM\Column(name="date_fin", type="string")
      */
     private $dateFin;
 
@@ -182,7 +182,7 @@ class Evennement
     /**
      * Set dateDepart
      *
-     * @param \DateTime $dateDepart
+     * @param \string $dateDepart
      *
      * @return Evennement
      */
@@ -196,7 +196,7 @@ class Evennement
     /**
      * Get dateDepart
      *
-     * @return \DateTime
+     * @return \string
      */
     public function getDateDepart()
     {
@@ -206,7 +206,7 @@ class Evennement
     /**
      * Set dateFin
      *
-     * @param \DateTime $dateFin
+     * @param \string $dateFin
      *
      * @return Evennement
      */
@@ -220,7 +220,7 @@ class Evennement
     /**
      * Get dateFin
      *
-     * @return \DateTime
+     * @return \string
      */
     public function getDateFin()
     {
