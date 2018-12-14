@@ -12,12 +12,12 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class DemandController
  * @package AppBundle\Controller
- * @Route("/demand/")
+ * @Route("/demand")
  */
 class DemandController extends Controller
 {
     /**
-     * @Route("edit/{demande}",name="demandeditor")
+     * @Route("/edit/{demande}",name="demandeditor")
      */
     public function indexAction(Request $request, Demande $demande = null)
     {
@@ -32,11 +32,25 @@ class DemandController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             dump($demande);
-
             $em->persist($demande);
             $em->flush();
             ServiceProvidingItem::notifier("test", "hello");
         }
-        return $this->render('AppBundle:DemandsForms:DemandEdit.html.twig',array('__form'=>$__form->createView()));
+        return $this->render('AppBundle:DemandsForms:DemandEdit.html.twig', array('__form' => $__form->createView()));
+    }
+
+    /**
+     * @param Request $request
+     * @param null $filter
+     * @Route("/")
+     */
+    public function listAction(Request $request, $filter = null)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $demands=$em->getRepository(Demande::class)->findOneBy(array(
+            'employe_emetteur' => 
+        ), array('updated_at' => 'DESC'));
+
+        return $this->render('AppBundle:DemandsForms:DemandListing.html.twig', array('demands' => $demands));
     }
 }
