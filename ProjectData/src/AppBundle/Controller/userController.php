@@ -11,10 +11,17 @@ use AppBundle\Entity\User;
 
 use AppBundle\Entity\Media;
 
+/**
+ * Class userController
+ * @package AppBundle\Controller
+ * @Route("/user")
+ */
+
+
 class userController extends Controller
 {
     /**
-     * @Route("/listuser",name="ListUser")
+     * @Route("/",name="ListUser")
      */
 
     public function listAction(Request $request)
@@ -35,13 +42,14 @@ class userController extends Controller
 
 
     /**
-     * @Route("/update/{personne}")
+     * @Route("/update_user/{personne}",name="profile_update")
      */
     public function updateindexAction(Request $request, User $personne = null)
 
     {
-        if (!$personne)
-            $personne = new User();
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+        if(!$personne)
+            $personne = $this->getUser();
         $form = $this->createForm(UtilisateurType::class, $personne);
 
         $form->handleRequest($request);
@@ -56,8 +64,8 @@ class userController extends Controller
             $em->flush();
         }
 
-        return $this->render('@App/user/updateuser.html.twig', array(
-            'form' => $form->createView()
+        return $this->render('@App/user/UpdateUserProfile.html.twig', array(
+            '__form' => $form->createView()
         ));
     }
 

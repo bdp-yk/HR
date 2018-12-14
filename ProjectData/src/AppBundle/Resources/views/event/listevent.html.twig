@@ -1,99 +1,119 @@
-{% extends "@App/index.html.twig" %}
+{% extends "@App/HomeLayout.html.twig" %}
 
-  {% block contentbody %}
-    <h1>Liste des evenements</h1>
-
-    <table class="table align-items-center table-flush">
-        <thead class="thead-light">
-        <tr>
-
-            <th>Id </th>
-            <th>Responsable_evennement </th>
-            <th>Media_event</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">DateDepart</th>
-            <th scope="col">DateFin</th>
-            <th scope="col">Place</th>
-            <th scope="col">Organisateur</th>
-            <th scope="col">DescriptionOrganisateur</th>
-            <th scope="col">Accompagnement</th>
-            <th scope="col">Frais </th>
-            <th scope="col">Transport</th>
-            <th scope="col">LimitInscription</th>
-        </tr>
-        </thead>
-        {% for personne in evennements %}
-
-        <tbody>
-        <tr>
-
-            <th scope="row">
-            <td> {{ personne.getResponsableEvennement()}} </td>
-            <td> {{personne.getMediaEvent().getId()  }}   </td>
-            <td> {{ personne.id }}     </td>
-
-            <th>
-
-                {{ personne.title }}
-            </th>
-
-            <td>
-
-                {{ personne.description }}
-
-            </td>
+{% block contentheader %}
 
 
-                {{ personne.dateDepart|date("m/d/y") }}
-            </td>
-            <td>
-
-                {{ personne.dateFin|date("m/d/y") }}
-            </td>
-            <td>
-
-                {{ personne.place }}
-            </td>
-            <td>
-
-                {{ personne.organisateur }}
-            </td>
-            <td>
-
-                {{ personne.descriptionOrganisateur }}
-            </td>
-            <td>
-
-                {{ personne.accompagnement}}
-            </td>
-            <td>
-
-                {{ personne.frais }}
-            </td>
-            <td>
-
-                {{ personne.transport }}
-            </td>
-            <td>
-
-                {{ personne.limitInscription }}
-            </td>
-
-            {% endfor %}
-
-
-
-
-
-        </tr>
-
-
-
-
-        </tbody>
-    </table>
-
-
-
+    <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+         style="min-height: 600px; background-image: url({{ asset('../assets/img/theme/profile-cover.jpg') }}); background-size: cover; background-position: center top;">
+        <!-- Mask -->
+        <span class="mask bg-gradient-default opacity-8"></span>
+        <!-- Header container -->
+        <div class="container-fluid d-flex align-items-center">
+            <div class="row">
+                <div class="col-lg-7 col-md-10">
+                    <h1 class="display-2 text-white">Events Lists </h1>
+                    <p class="text-white mt-0 mb-5">Here is the list of all Events...</p>
+                    <a href="{{ path('departement_index') }}" class="btn btn-info">Manage Teams</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
+  {% block contentbody %}
+
+      <div class="container-fluid mt--7">
+          <!-- Table -->
+          <div class="row">
+              <div class="col">
+                  <div class="card shadow">
+                      <div class="card-header border-0">
+                          <h3 class="mb-0">Card tables</h3>
+                      </div>
+                      <div class="table-responsive">
+                          <table class="table align-items-center table-flush">
+                              <thead class="thead-light">
+                              <tr>
+                                  <th scope="col">Responsable_evennement</th>
+                                  <th scope="col">Media_event</th>
+                                  <th scope="col">Title</th>
+                                  <th scope="col">Description</th>
+                                  <th scope="col">DateDepart</th>
+                                  <th scope="col">DateFin</th>
+                                  <th scope="col">Organisateur</th>
+                                  <th scope="col">DescriptionOrganisateur</th>
+                                  <th scope="col">Accompagnement</th>
+                                  <th scope="col">Frais</th>
+                                  <th scope="col">Transport</th>
+                                  <th scope="col">LimitInscription</th>
+                              </tr>
+                              </thead>
+                              <tbody>
+                              {% for ev in evennements %}
+
+                                  <tr>
+
+                                      <td> {{ ev.getResponsableEvennement() }} </td>
+                                      <td> {{ ev.getMediaEvent().getId() }}   </td>
+                                      <td> {{ ev.id }}     </td>
+
+                                      <th>
+
+                                          {{ ev.title }}
+                                      </th>
+
+                                      <td>
+
+                                          {{ ev.description }}
+
+                                      </td>
+
+
+                                      {{ ev.dateDepart|date("m/d/y") }}
+                                      </td>
+                                      <td>
+
+                                          {{ ev.dateFin|date("m/d/y") }}
+                                      </td>
+                                      <td>
+
+                                          {{ ev.place }}
+                                      </td>
+                                      <td>
+
+                                          {{ ev.organisateur }}
+                                      </td>
+                                      <td>
+
+                                          {{ ev.descriptionOrganisateur }}
+                                      </td>
+                                      <td>
+
+                                          {{ ev.accompagnement }}
+                                      </td>
+                                      <td>
+
+                                          {{ ev.frais }}
+                                      </td>
+                                      <td>
+
+                                          {{ ev.transport }}
+                                      </td>
+                                      <td>
+
+                                          {{ ev.limitInscription }}
+                                      </td>
+
+
+                                  </tr>
+
+                              {% endfor %}
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+  {% endblock %}

@@ -5,7 +5,6 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Departement;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -47,10 +46,10 @@ class UtilisateurType extends AbstractType
             ->add('ribBancaire', TextType::class, array('attr' => array(
                 'class' => 'form-control'
             )))
-            ->add('dateNaissance', DateType::class, array('attr' => array(
+            ->add('dateNaissance', TextType::class, array('attr' => array(
                 'class' => 'form-control datepicker'
             )))
-            ->add('dateEmploie', DateType::class, array('attr' => array(
+            ->add('dateEmploie', TextType::class, array('attr' => array(
                 'class' => 'form-control datepicker'
             )))
             ->add('adresseVille', TextType::class, array('attr' => array(
