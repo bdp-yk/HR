@@ -1,0 +1,44 @@
+{% extends 'AppBundle::HomeLayout.html.twig' %}
+
+{% block contentbody %}
+    <h1>Absence</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ absence.id }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{{ absence.dateDebut }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ absence.dateFin }}</td>
+            </tr>
+            <tr>
+                <th>Estconges</th>
+                <td>{% if absence.estConges %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Estannuel</th>
+                <td>{% if absence.estAnnuel %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('absence_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('absence_edit', { 'id': absence.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

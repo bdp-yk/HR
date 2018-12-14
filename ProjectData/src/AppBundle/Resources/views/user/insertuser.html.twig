@@ -18,7 +18,7 @@
 {% endblock %}
 {% block contentbody %}
     <div class="container-fluid mt--7">
-        <form method="post" action="{{ path('demandeditor', {'demande': 'x'}) }}">
+        <form method="post" action="{{ path('offreupdate') }}">
 
             <div class="row">
                 <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
@@ -96,11 +96,13 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-username">Demand Subject</label>
-                                            {#<input type="text" id="input-username"#}
-                                            {#class="form-control form-control-alternative" placeholder="Username"#}
-                                            {#value="lucky.jesse">#}
-                                            {{ form_widget(__form.id) }}
+                                            <label>{{ form_label(__form.titre)  }}</label>
+                                            <div class="pl-lg-4">
+                                                <div class="form-group">
+                                                    {{ form_widget(__form.titre) }}
+
+                                                </div>
+                                            </div>
 
                                         </div>
                                     </div>
@@ -109,77 +111,43 @@
                             <hr class="my-4"/>
                             <!-- Description -->
                             <h6 class="heading-small text-muted mb-4">Optional</h6>
+
                             <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <label>About Form</label>
-                                    {#<textarea rows="4" class="form-control form-control-alternative"#}
-                                    {#placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>#}
-                                    {{ form_widget(__form.titre) }}
-
-                                </div>
-                            </div>
-
-                            <hr class="my-4"/>
-                            <!-- Description -->
-                            <h6 class="heading-small text-muted mb-4">Optional</h6>
-                            <div class="pl-lg-4">
-                                <div class="form-group">
-                                    <label>About Form</label>
-                                    {#<textarea rows="4" class="form-control form-control-alternative"#}
-                                    {#placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>#}
+                                    <label>{{ form_label(__form.description)  }}</label>
                                     {{ form_widget(__form.description) }}
 
                                 </div>
                             </div>
 
-                            <hr class="my-4"/>
-                            <!-- Description -->
-                            <h6 class="heading-small text-muted mb-4">Optional</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <label>About Form</label>
-                                    {#<textarea rows="4" class="form-control form-control-alternative"#}
-                                    {#placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>#}
+                                    <label>{{ form_label(__form.poste)  }}</label>
                                     {{ form_widget(__form.poste) }}
 
                                 </div>
                             </div>
 
-                            <hr class="my-4"/>
-                            <!-- Description -->
-                            <h6 class="heading-small text-muted mb-4">Optional</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <label>About Form</label>
-                                    {#<textarea rows="4" class="form-control form-control-alternative"#}
-                                    {#placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>#}
+                                    <label>{{ form_label(__form.salaire)  }}</label>
                                     {{ form_widget(__form.salaire) }}
 
                                 </div>
                             </div>
 
 
-                            <hr class="my-4"/>
-                            <!-- Description -->
-                            <h6 class="heading-small text-muted mb-4">Optional</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <label>About Form</label>
-                                    {#<textarea rows="4" class="form-control form-control-alternative"#}
-                                    {#placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>#}
+                                    <label>{{ form_label(__form.promotion)  }}</label>
                                     {{ form_widget(__form.promotion) }}
 
                                 </div>
                             </div>
 
-                            <hr class="my-4"/>
-                            <!-- Description -->
-                            <h6 class="heading-small text-muted mb-4">Optional</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group">
-                                    <label>About Form</label>
-                                    {#<textarea rows="4" class="form-control form-control-alternative"#}
-                                    {#placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>#}
+                                    <label>{{ form_label(__form.media_offre)  }}</label>
                                     {{ form_widget(__form.media_offre) }}
 
                                 </div>

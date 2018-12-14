@@ -1,0 +1,45 @@
+{% extends 'AppBundle::HomeLayout.html.twig' %}
+
+{% block contentbody %}
+    <h1>Absences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Estconges</th>
+                <th>Estannuel</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for absence in absences %}
+            <tr>
+                <td><a href="{{ path('absence_show', { 'id': absence.id }) }}">{{ absence.id }}</a></td>
+                <td>{{ absence.dateDebut }}</td>
+                <td>{{ absence.dateFin }}</td>
+                <td>{% if absence.estConges %}Yes{% else %}No{% endif %}</td>
+                <td>{% if absence.estAnnuel %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('absence_show', { 'id': absence.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('absence_edit', { 'id': absence.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('absence_new') }}">Create a new absence</a>
+        </li>
+    </ul>
+{% endblock %}

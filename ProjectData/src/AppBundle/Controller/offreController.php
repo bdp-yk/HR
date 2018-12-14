@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class offreController extends Controller
 {
     /**
-     * @Route("/addoffre/{offre}")
+     * @Route("/addoffre/{offre}",name="addoffre")
      */
     public function addoffreAction(Request $request, OffreEmploie $offre = null)
 
@@ -30,8 +30,8 @@ class offreController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $m=new Media();
-            $m->setSource($offre->getMediaOffre()->getClientOriginalName());
-            $m->setType($offre->getMediaOffre()->getClientMimeType());
+            $m->setSource('aa.png');
+            $m->setType('image/png');
             $offre->setMediaOffre($m);
 
             $em->persist($m);
@@ -39,9 +39,10 @@ class offreController extends Controller
             $em->persist($offre);
 
             $em->flush();
+            return $this->redirectToRoute('listingoffre');
         }
         return $this->render('@App/offre/update_insert.html.twig', array(
-            'form' => $form->createView()
+            '__form' => $form->createView()
         ));
 
 
@@ -69,7 +70,7 @@ class offreController extends Controller
             $em->flush();
         }
         return $this->render('@App/offre/update_insert.html.twig', array(
-            'form' => $form->createView()
+            '__form' => $form->createView()
         ));
 
 
@@ -82,6 +83,7 @@ class offreController extends Controller
     { $var=new OffreEmploie();
         $repository = $this->getDoctrine()->getRepository("AppBundle:OffreEmploie");
         $offre = $repository->findAll();
+
         return $this->render('@App/offre/listoffre.html.twig', array(
             'offre'=>$offre));
         dump($offre);

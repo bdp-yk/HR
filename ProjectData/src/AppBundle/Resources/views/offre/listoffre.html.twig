@@ -1,4 +1,4 @@
-{% extends "@App/index.html.twig" %}
+{% extends "@App/HomeLayout.html.twig" %}
 
   {% block contentbody %}
       <h1>Liste des offres</h1>
@@ -17,7 +17,7 @@
 
           </tr>
           </thead>
-          {% for personne in offre %}
+          {% for oe in offre %}
 
           <tbody>
           <tr>
@@ -25,29 +25,29 @@
               <th scope="row">
 
 
-                  {{ personne.title }}
+                  {{ oe.getTitre() }}
               </th>
 
               <td>
 
-                  {{ personne.description }}
+                  {{ oe.getDescription ()}}
 
               </td>
 
 
-              {{ personne.poste }}
-              </td>
-              <td>
-
-                  {{ personne.salaire }}
+              {{ oe.poste }}
               </td>
               <td>
 
-                  {{ personne.promotion }}
+                  {{ oe.getSalaire ()}}
+              </td>
+              <td>
+
+                  {{ oe.getPromotion() }}
               </td>
 
               <td>
-                  {{personne.getMediaEvent().getId()  }}
+                  {{oe.getMediaOffre()|json_encode|raw  }}
               </td>
 
               {% endfor %}

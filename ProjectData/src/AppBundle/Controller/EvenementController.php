@@ -13,6 +13,11 @@ use AppBundle\Form\EvennementType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class EvenementController
+ * @package AppBundle\Controller
+ * @Route("/event")
+ */
 class EvenementController extends Controller
 {
     /**
@@ -78,12 +83,15 @@ class EvenementController extends Controller
 
     }
     /**
-     * @Route("/listevent",name="listing")
+     * @Route("/",name="listing")
      */
     public function listAction(Request $request)
     { $var=new Evennement();
         $repository = $this->getDoctrine()->getRepository("AppBundle:Evennement");
         $evenements = $repository->findAll();
+//        dump($evenements);
+//        die();
+//
 
         //dump($evenements[0]);
 //        die();
