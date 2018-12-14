@@ -230,57 +230,11 @@
         </div>
     </nav>
     <!-- Header -->
-    <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
-        <div class="container-fluid">
-            <div class="header-body">
-                <!-- Card stats -->
-                {% block contentheader %}
-                {% endblock %}
-            </div>
-        </div>
-    </div>
-    <!-- Page content -->
-    <div class="container-fluid mt--7">
+    {% block contentheader %}
+    {% endblock %}
+    {% block contentbody %}
 
-        <div class="row">
-            <div class="col-xl-8 mb-5 mb-xl-0">
-                <div class="card bg-gradient-default shadow">
-                    {% block contentbody %}
-
-                    {% endblock %}
-                </div>
-            </div>
-        </div>
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="row align-items-center justify-content-xl-between">
-                <div class="col-xl-6">
-                    <div class="copyright text-center text-xl-left text-muted">
-                        &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1"
-                                       target="_blank">Creative Tim</a>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com" class="nav-link" target="_blank">Creative Tim</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link" target="_blank">About
-                                Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="http://blog.creative-tim.com" class="nav-link" target="_blank">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md"
-                               class="nav-link" target="_blank">MIT ELicense</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </footer>
-    </div>
+    {% endblock %}
 </div>
 <!-- Argon Scripts -->
 <!-- Core -->
@@ -307,7 +261,7 @@
     var channel = pusher.subscribe('event-notifier');
     channel.bind('event-update', data => {
         console.log(JSON.stringify(data));
-        var text ="Nouveau evenement <strong> " + data['message'] +
+        var text = "Nouveau evenement <strong> " + data['message'] +
             "</strong><br/><a href='" + data['event'] +
             "'>Cliquer ici pour plus de détails </a>";
         $.notify({

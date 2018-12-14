@@ -108,30 +108,5 @@ class EvenementController extends Controller
 
     }
 
-    /**
-     * @param $message
-     * @param $event_id
-     * @Route("/notify/{message}/{event_id}")
-     * @return Response
-     * @throws \Pusher\PusherException
-     */
-    public function notifier($message, $event_id){
-        $options = array(
-            'cluster' => 'eu',
-            'useTLS' => true
-        );
-        $pusher = new Pusher(
-            'e59775b63526c7a39ddf',
-            '90488c426ffdccc3dc1f',
-            '672117',
-            $options
-        );
-
-        $data['message'] = $message;
-        $data['event'] ="/event/display?id=". $event_id;
-        $pusher->trigger('event-notifier', 'event-update', $data);
-
-//        return $this->redirectToRoute('listingoffre');
-    }
 
 }
