@@ -37,6 +37,6 @@ class DemandController extends Controller
             $em->flush();
             ServiceProvidingItem::notifier("test", "hello");
         }
-        return $this->render('AppBundle:DemandsForms:DemandEdit.html.twig');
+        return $this->render('AppBundle:DemandsForms:DemandEdit.html.twig',array('__form'=>$__form->createView()));
     }
 }
