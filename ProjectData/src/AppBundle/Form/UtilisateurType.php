@@ -71,7 +71,8 @@ class UtilisateurType extends AbstractType
                 'attr' => array(
                     'class' => 'select2 form-control py-2'
                 )
-            ));
+            ))
+            ->add('Submit',SubmitType::class);
 
     }
 

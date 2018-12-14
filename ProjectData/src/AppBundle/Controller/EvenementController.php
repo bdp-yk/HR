@@ -6,7 +6,6 @@ use AppBundle\Entity\Evennement;
 use AppBundle\Entity\Media;
 use AppBundle\FeaturedServices\ServiceProvidingItem;
 use http\Env\Response;
-use Pusher\Pusher;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use AppBundle\Form\EvennementType;
