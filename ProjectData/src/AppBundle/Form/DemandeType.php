@@ -17,8 +17,7 @@ class DemandeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('sujet', TextType::class, array("attr" => array("class" => "form-control form-control-alternative"
-        , "placeholder" => "Username"
-        , "value" => "lucky.jesse")))
+        , "placeholder" => "Username")))
             ->add('description', TextareaType::class, array("attr" => array("rows" => "4", "class" => "form-control form-control-alternative", "placeholder" => "A few words about you ...")))
             ->add('employe_emetteur', HiddenType::class);
     }
