@@ -40,6 +40,7 @@ class EvenementController extends Controller
             $em->persist($event);
             //Commit
             $em->flush();
+            $this->notifier($event->getTitle(),$event->getId());
         }
         return $this->render('@App/event/update_insert.html.twig', array(
             'form' => $form->createView()
@@ -114,7 +115,7 @@ class EvenementController extends Controller
      * @return Response
      * @throws \Pusher\PusherException
      */
-    public function notifier(Request $request, $message, $event_id){
+    public function notifier($message, $event_id){
         $options = array(
             'cluster' => 'eu',
             'useTLS' => true
@@ -130,7 +131,7 @@ class EvenementController extends Controller
         $data['event'] ="/event/display?id=". $event_id;
         $pusher->trigger('event-notifier', 'event-update', $data);
 
-        return $this->redirectToRoute('listingoffre');
+//        return $this->redirectToRoute('listingoffre');
     }
 
 }
