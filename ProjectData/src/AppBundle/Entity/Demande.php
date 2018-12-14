@@ -37,8 +37,8 @@ class Demande
 
 
     /**
-     * @var User;
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User")
+     * @var User[];
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      */
     private $employe_emetteur;
 
@@ -102,7 +102,7 @@ class Demande
     }
 
     /**
-     * @return User
+     * @return User[]
      */
     public function getEmployeEmetteur()
     {
@@ -110,12 +110,13 @@ class Demande
     }
 
     /**
-     * @param User $employe_emetteur
+     * @param User[] $employe_emetteur
      */
     public function setEmployeEmetteur($employe_emetteur)
     {
         $this->employe_emetteur = $employe_emetteur;
     }
+
 
 }
 

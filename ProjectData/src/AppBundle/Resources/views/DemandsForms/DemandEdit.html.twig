@@ -17,7 +17,7 @@
 {% endblock %}
 {% block contentbody %}
     <div class="container-fluid mt--7">
-        <form method="post" action="{{ path('demandeditor', {'demande': 'x'}) }}">
+        <form method="post" action="{{ path('demandeditor') }}">
 
             <div class="row">
                 <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
@@ -121,7 +121,7 @@
                     </div>
                 </div>
             </div>
-            {{ form_widget(__form) }}
+            {#<input type="hidden" name="__form[employe_emetteur]" value="{{ app.user.id }}">#}
         </form>
 
     </div>

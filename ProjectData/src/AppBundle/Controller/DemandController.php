@@ -21,20 +21,25 @@ class DemandController extends Controller
      */
     public function indexAction(Request $request, Demande $demande = null)
     {
+        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
+
         if (!isset($demande)) {
             $demande = new Demande();
         }
+        $demande->setEmployeEmetteur($this->getUser());
+//        dump($demande);
+//die();
         $__form = $this->createForm(DemandeType::class, $demande);
-
         $__form->handleRequest($request);
 
-        if ($__form->isSubmitted() && $__form->isValid()) {
+        if ($__form->isSubmitted()) {
 
             $em = $this->getDoctrine()->getManager();
-            dump($demande);
+//            $demande->setEmployeEmetteur( $this->getUser());
             $em->persist($demande);
             $em->flush();
-            ServiceProvidingItem::notifier("test", "hello");
+//            ServiceProvidingItem::notifier("test", "hello");
+            return $this->redirectToRoute("demandlisting");
         }
         return $this->render('AppBundle:DemandsForms:DemandEdit.html.twig', array('__form' => $__form->createView()));
     }
@@ -42,15 +47,13 @@ class DemandController extends Controller
     /**
      * @param Request $request
      * @param null $filter
-     * @Route("/")
+     * @Route("/",name="demandlisting")
      */
     public function listAction(Request $request, $filter = null)
     {
         $em = $this->getDoctrine()->getManager();
-        $demands=$em->getRepository(Demande::class)->findOneBy(array(
-            'employe_emetteur' => 
-        ), array('updated_at' => 'DESC'));
 
+        $demands=$em->getRepository(Demande::class)->findAll();
         return $this->render('AppBundle:DemandsForms:DemandListing.html.twig', array('demands' => $demands));
     }
 }
