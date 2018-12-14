@@ -68,7 +68,7 @@ class offreController extends Controller
             $em->persist($offre);
             $em->flush();
         }
-        return $this->render('@App/offre/update_insert.html.twig', array(
+        return $this->render('@App/user/insertuser.html.twig', array(
             'form' => $form->createView()
         ));
 
